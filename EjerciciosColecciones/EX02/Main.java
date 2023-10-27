@@ -1,0 +1,9 @@
+package EX02;
+
+public class Main {
+    public static void main(String[] args) {
+        CantanteFamosoService cSrv = new CantanteFamosoService();
+
+        cSrv.menu();
+    }
+}
