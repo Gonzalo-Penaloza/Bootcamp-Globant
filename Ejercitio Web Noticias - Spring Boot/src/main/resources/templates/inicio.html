@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <header th:replace="/fragments/header :: header"></header>
+        <main>
+            <div class="container-home">
+                <div class="class-card" th:if="${error != null}">
+                    <div class="card-body">
+                        <h5 class="card-title">Error</h5>
+                        <p class="card-text" th:text="${error}"></p>        
+                    </div>
+                </div>
+
+                <div class="class-card" th:if="${exito != null}">
+                    <div class="card-body">
+                        <h5 class="card-title">Error</h5>
+                        <p class="card-text" th:text="${exito}"></p>        
+                    </div>
+                </div>
+
+                <div class="cont-text">
+                    <div class="cont-text" th:if="${session.usuariosession == null}">
+                        <h3 id="text-one">Bievenido al NOTICIERO EGG</h3>
+                        <h3 id="text-two">Noticias actualizadas al momento</h3>
+                    </div>
+                    <div class="cont-text" th:if="${session.usuariosession != null}">
+                        <h3 id="text-one">Bienvenido de nuevo 
+                            <span th:text="${usuario.nombre}"></span>
+                        </h3>
+                        <h3 id="text-two">Noticias actualizadas al momento</h3>
+                    </div>
+                </div>
+                <div class="cont-img">
+                    <img src="/img/logo.png" alt="logo-noticiero-egg">
+                </div>
+            </div>
+        </main>
+
+        <footer th:replace="/fragments/footer :: footer"></footer>  
+    </body>
+</html>

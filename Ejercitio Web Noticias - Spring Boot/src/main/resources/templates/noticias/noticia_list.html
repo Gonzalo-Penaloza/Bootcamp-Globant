@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <header th:replace="/fragments/header :: header"></header>
+        <main>
+            <div class="cont-table">
+                <table class="mi-tabla">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID Noticia</th>
+                            <th scope="col">Titulo</th>
+                            <th th:if="${#authorization.expression('hasRole(''PERIODISTA'') or hasRole(''ADMIN'')')}">Acciones</th>                     
+                        </tr>
+                    </thead>
+                    <tbody th:if="${noticias.isEmpty()}">
+                        <tr>
+                            <td colspan="3">No hay noticias actualmente</td>
+                        </tr>
+                    </tbody>
+                    <tbody th:if="${noticias.size() > 0}">
+                        <tr th:each="noticia : ${noticias}">                          
+                            <th scope="row" th:text="${noticia.id}"></th>
+                            <td th:text="${noticia.titulo}"></td>
+                            <td th:if="${#authorization.expression('hasRole(''PERIODISTA'') or hasRole(''ADMIN'')')}" id="actions-ref">
+                                <a th:href="@{/noticia/modificar/__${noticia.id}__}">Modificar</a>
+                                <form th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="form-btn" th:action="@{/noticia/eliminar/__${noticia.id}__}" method="POST">
+                                    <button type="submit" id="delBtn">Eliminar</button>
+                                </form>   
+                            </td>      
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <footer th:replace="/fragments/footer :: footer"></footer>  
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <header th:replace="/fragments/header :: header"></header>
+        <main>
+            <div class="container-form">
+                <form class="formulario" action="/noticia/crear-noticia-exito" method="POST">
+
+                    <div th:if="${error != null}">
+                        <div class="card-body">
+                            <h5 class="card-title">Error</h5>
+                            <p class="card-text" th:text="${error}"></p>        
+                        </div>
+                    </div>
+
+                    <div th:if="${exito != null}">
+                        <div class="card-body">
+                            <h5 class="card-title">Error</h5>
+                            <p class="card-text" th:text="${exito}"></p>        
+                        </div>
+                    </div>
+
+                    <div class="div-label">
+                        <label>Cargar Noticia</label>              
+                    </div>
+                    <div class="form-group my-3">   
+                        <label>Ingrese titulo:</label>              
+                        <input type="text" class="form-control" name="titulo" placeholder="Titulo">  
+                    </div>
+
+                    <div class="form-group my-3">        
+                        <textarea name="cuerpo" placeholder="Ingresa el texto de la noticia"></textarea>          
+                    </div>            
+
+                    <button type="submit" class="btn btn-primary"> Subir </button>
+                </form>
+            </div>
+        </main>
+        <footer th:replace="/fragments/footer :: footer"></footer>  
+        <script src="https://kit.fontawesome.com/d168e18a02.js" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+</html>

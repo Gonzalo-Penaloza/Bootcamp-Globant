@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <header>
+            <div class="container">
+                <h2>Carga la noticia aqui!</h2>
+            </div>
+        </header>
+
+        <div class="container">
+
+            <form class="formulario" action="/noticia/registro" method="POST">
+
+                <div th:if="${error != null}">
+                    <div class="card-body">
+                        <h5 class="card-title">Error</h5>
+                        <p class="card-text" th:text="${error}"></p>        
+                    </div>
+                </div>
+
+                <div th:if="${exito != null}">
+                    <div class="card-body">
+                        <h5 class="card-title">Error</h5>
+                        <p class="card-text" th:text="${exito}"></p>        
+                    </div>
+                </div>
+
+                <div>
+                    <label>Cargar Libro</label>              
+                </div>
+                <div class="form-group my-3">                 
+                    <input type="text" class="form-control" name="titulo" placeholder="Titulo">  
+                </div>
+
+                <div class="form-group my-3">                    
+                    <textarea name="cuerpo" placeholder="Cuerpo"></textarea>    
+                </div>            
+
+                <button type="submit" class="btn btn-primary"> Subir </button>
+            </form>
+    </body>
+</html>

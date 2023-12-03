@@ -1,0 +1,21 @@
+<header>
+    <nav>
+        <ul>
+            <li th:if="${session.usuariosession == null}">
+                <a  href="/login" class="btn-nav">Iniciar Sesion</a>
+            </li>
+            <li th:if="${session.usuariosession == null}">
+                <a  href="/registrar" class="btn-nav">Registrarse</a>
+            </li>           
+            <li th:if="${session.usuariosession != null}">
+                <a  href="/noticia/lista" class="btn-nav">Lista de Noticias</a>
+            </li>
+            <li th:if="${session.usuariosession != null}">
+                <a  href="/logout" class="btn-nav">Cerrar Sesion</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-text">
+        <h2><a href="/">Noticiero EGG</a></h2>
+    </div>
+</header>

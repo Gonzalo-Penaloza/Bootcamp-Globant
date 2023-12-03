@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <header th:replace="/fragments/header :: header"></header>
+        <main>
+            <div class="container-form">
+
+                <form class="registro-form" th:action="@{/registro}" method="POST">
+
+                    <div class="class-card" th:if="${error != null}">
+                        <div class="card-body">
+                            <h5 class="card-title">Error</h5>
+                            <p class="card-text" th:text="${error}"></p>        
+                        </div>
+                    </div>
+
+                    <div class="class-card" th:if="${exito != null}">
+                        <div class="card-body">
+                            <h5 class="card-title">Error</h5>
+                            <p class="card-text" th:text="${exito}"></p>        
+                        </div>
+                    </div>
+
+                    <div class="login-titulo">
+                        <label>Registrate!</label>   
+                    </div>     
+                    <div class="sign-up">
+                        <div class="form-group my-3">          
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre">                      
+                        </div>
+                        <div class="form-group my-3">   
+                            <label>Email</label>              
+                            <input type="email" class="form-control" name="email" placeholder="Email">  
+                        </div>
+
+                        <div class="form-group my-3"> 
+                            <label>Contraseña</label>                   
+                            <input type="password" class="form-control" name="password" placeholder="Contraseña">  
+                        </div>
+
+                        <div class="form-group my-3">   
+                            <label>Repetir Contraseña</label>                  
+                            <input type="password" class="form-control" name="password2" placeholder="Repetir contraseña">  
+                        </div>  
+                        
+                        <select name="rol">
+                            <option>Seleccionar Rol</option>
+                            <option th:each="rol : ${roles}"
+                                    th:value="${rol}"
+                                    th:text="${rol}"/>
+                        </select> 
+                    </div>                        
+                    <button type="submit" class="btn-sign btn-primary"> Registrarse </button>
+                </form>     
+            </div>     
+        </main>
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>

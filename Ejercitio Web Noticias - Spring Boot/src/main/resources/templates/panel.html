@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <header th:replace="/fragments/header :: header"></header>
+        <main>
+            <div class="container-panel">
+                <div class="class-card" th:if="${error != null}">
+                    <div class="card-body">
+                        <h5 class="card-title">Error</h5>
+                        <p class="card-text" th:text="${error}"></p>
+                    </div>
+                </div>
+
+                <div class="class-card" th:if="${exito != null}">
+                    <div class="card-body">
+                        <h5 class="card-title">Error</h5>
+                        <p class="card-text" th:text="${exito}"></p>
+                    </div>
+                </div>
+
+                <div class="welcome-cont">
+                    <div class="welcome-msg">
+                        <h3 id="w-text">Bienvenido de nuevo <span th:text="${usuario.nombre}"></span></h3>
+                    </div>
+                </div>
+                <div class="dash-cont">
+                    <div class="dashboard">
+                        <div class="title-section">
+                            <p id="news">Seccion Noticias</p>
+                        </div>
+                        <div class="anchors-act">
+                            <div class="actions">
+                                <a href="/noticia/crear-noticia" class="dash-link">Nuevo</a>
+                            </div>
+                            <div class="actions">
+                                <a href="/noticia/lista" class="dash-link">Modificar</a></div>
+                            <div class="actions">
+                                <a href="/noticia/eliminar" class="dash-link">Eliminar</a>
+                            </div>  
+                        </div>
+                        <div class="title-section">
+                            <p id="news">Seccion Usuarios</p>
+                        </div>
+                        <div class="anchors-act">
+                            <div class="actions">
+                                <a href="/admin/lista-usuarios" class="dash-link">Lista</a>
+                            </div>
+                            <div class="actions">
+                                <a href="/noticia/noticia_form.html" class="dash-link">Editar</a></div>
+                            <div class="actions">
+                                <a href="/noticia/noticia_form.html" class="dash-link">Eliminar</a>
+                            </div>      
+                        </div>
+                    </div>
+                    <div class="last-new">
+                        <div class="label-text">
+                            <label>ULTIMA NOTICIA</label>
+                        </div>   
+                        <div class="last-title">
+                            <h3 th:text="${noticia?.titulo}"></h3>
+                        </div>
+                        <div class="last-body">
+                            <h3 th:text="${noticia?.cuerpo}"></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer th:replace="/fragments/footer :: footer"></footer>  
+    </body>
+</html>
